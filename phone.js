@@ -1,4 +1,4 @@
-const loadData = async (searchPhone, isShowAll) => {
+const loadData = async (searchPhone = 13, isShowAll) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchPhone}`)
   const data = await res.json()
   const showData = data.data
@@ -41,8 +41,8 @@ const displayPhones = (displayData, isShowAll) => {
           <div class="card-body">
             <h2 class="card-title">${phones.brand}</h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <button class="btn btn-primary">Buy Now</button>
+            <div class="card-actions justify-center">
+              <button onclick='showDetailButton("${phones.slug}");buttonShowModal.showModal()' class="btn btn-primary">show detail</button>
             </div>
           </div>
         </div>
@@ -55,6 +55,32 @@ const displayPhones = (displayData, isShowAll) => {
   loadingSpinner(false)
 
 }
+
+// show detail button
+const showDetailButton = async (id) => {
+  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+  const data = await res.json()
+  const phone = data.data
+  showDisplayDetail(phone)
+}
+
+// show displaybutton
+const showDisplayDetail = (phone) => {
+  console.log(phone);
+  const showName = document.getElementById('show-detail-phone-name')
+  showName.innerText = phone.name
+  const showDetailContainer = document.getElementById('show-detail-container')
+  showDetailContainer.innerHTML = `
+  <img src="${phone.image}" alt="">
+  <p>brand:${phone.brand}</p>
+  <p>brand:${phone.releaseDate}</p>
+  <p>brand:${phone.slug}</p>
+  `
+  buttonShowModal.showModal()
+}
+
+
+
 // searchBar
 const handleButton = (isShowAll) => {
   // loadingSpinner call
@@ -84,3 +110,5 @@ const loadingSpinner = (isLoading) => {
 const showAllButton = () => {
   handleButton(true)
 }
+
+loadData()

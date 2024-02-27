@@ -37,6 +37,23 @@
       <div id="show-all-button" class="hidden my-8 text-center">
         <button onclick="showAllButton()" class="btn btn-active btn-accent">Show all button</button>
       </div>
+      <!-- modal -->
+      <!-- Open the modal using ID.showModal() method -->
+      <!-- <button class="btn" onclick="buttonShowModal.showModal()">open modal</button> -->
+      <dialog id="buttonShowModal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <h3 id="show-detail-phone-name" class="font-bold text-lg">Hello!</h3>
+          <div id="show-detail-container">
+
+          </div>
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </section>
   </main>
 
