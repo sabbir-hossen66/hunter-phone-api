@@ -1,4 +1,4 @@
-const loadData = async (searchPhone = 13, isShowAll) => {
+const loadData = async (searchPhone, isShowAll) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchPhone}`)
   const data = await res.json()
   const showData = data.data
@@ -88,8 +88,8 @@ const handleButton = (isShowAll) => {
 
   const searchField = document.getElementById('search-field');
   const searchText = searchField.value;
-  // searchText.value.innerText = ''
-  // console.log(searchText);
+  // searchField.value = '' if i applicable this than showallbutton doesn't work and don't see value.
+
   loadData(searchText, isShowAll)
 
 }
@@ -111,4 +111,4 @@ const showAllButton = () => {
   handleButton(true)
 }
 
-loadData()
+// loadData()
