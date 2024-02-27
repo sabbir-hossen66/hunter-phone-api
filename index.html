@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="">
 
 <head>
   <meta charset="UTF-8">
@@ -18,10 +18,25 @@
 
 <body>
   <h2>hello phone</h2>
-  <main class="container mx-auto">
-    <section>
-      <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <main class="container mx-auto mt-8">
+    <section class="mb-5 text-center">
+      <input id="search-field" type="text" placeholder="search....."
+        class="input input-bordered input-primary w-full max-w-xs" />
+      <button onclick="handleButton()" class="btn btn-active btn-secondary">search</button>
+    </section>
 
+    <section>
+      <!-- spinner -->
+      <div id="loading-spinner" class="text-center my-4 hidden">
+        <span class="loading loading-spinner loading-lg"></span>
+      </div>
+
+      <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      </div>
+      <!-- show all button -->
+      <div id="show-all-button" class="hidden">
+        <button class="btn btn-active btn-accent">Show all button</button>
+      </div>
     </section>
   </main>
 
